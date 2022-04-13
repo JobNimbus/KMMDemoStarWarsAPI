@@ -1,0 +1,6 @@
+framework module StarWarsAPI {
+    umbrella header "StarWarsAPI.h"
+
+    export *
+    module * { export * }
+}
