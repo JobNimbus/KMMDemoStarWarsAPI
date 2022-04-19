@@ -6,7 +6,7 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class SWAPIStarWarsApiCompanion, SWAPIPerson, SWAPIPersonCompanion, SWAPIKotlinThrowable, SWAPIKotlinArray<T>, SWAPIKotlinException, SWAPIKotlinRuntimeException, SWAPIKotlinIllegalStateException, SWAPIKotlinx_serialization_coreSerializersModule, SWAPIKotlinx_serialization_coreSerialKind, SWAPIKotlinNothing;
+@class SWAPIStarWarsApiCompanion, SWAPIPeopleResult, SWAPIPerson, SWAPIPeopleResultCompanion, SWAPIPersonCompanion, SWAPIKotlinThrowable, SWAPIKotlinArray<T>, SWAPIKotlinException, SWAPIKotlinRuntimeException, SWAPIKotlinIllegalStateException, SWAPIKotlinx_serialization_coreSerializersModule, SWAPIKotlinx_serialization_coreSerialKind, SWAPIKotlinNothing;
 
 @protocol SWAPIKotlinx_serialization_coreKSerializer, SWAPIKotlinx_serialization_coreEncoder, SWAPIKotlinx_serialization_coreSerialDescriptor, SWAPIKotlinx_serialization_coreSerializationStrategy, SWAPIKotlinx_serialization_coreDecoder, SWAPIKotlinx_serialization_coreDeserializationStrategy, SWAPIKotlinIterator, SWAPIKotlinx_serialization_coreCompositeEncoder, SWAPIKotlinAnnotation, SWAPIKotlinx_serialization_coreCompositeDecoder, SWAPIKotlinx_serialization_coreSerializersModuleCollector, SWAPIKotlinKClass, SWAPIKotlinKDeclarationContainer, SWAPIKotlinKAnnotatedElement, SWAPIKotlinKClassifier;
 
@@ -171,7 +171,7 @@ __attribute__((swift_name("StarWarsApi")))
  @note This method converts instances of CancellationException to errors.
  Other uncaught Kotlin exceptions are fatal.
 */
-- (void)getAllCharactersWithCompletionHandler:(void (^)(NSArray<SWAPIPerson *> * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("getAllCharacters(completionHandler:)")));
+- (void)getAllCharactersWithCompletionHandler:(void (^)(SWAPIPeopleResult * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("getAllCharacters(completionHandler:)")));
 @end;
 
 __attribute__((objc_subclassing_restricted))
@@ -181,6 +181,31 @@ __attribute__((swift_name("StarWarsApi.Companion")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) SWAPIStarWarsApiCompanion *shared __attribute__((swift_name("shared")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("PeopleResult")))
+@interface SWAPIPeopleResult : SWAPIBase
+- (instancetype)initWithPeople:(NSArray<SWAPIPerson *> *)people count:(int32_t)count __attribute__((swift_name("init(people:count:)"))) __attribute__((objc_designated_initializer));
+@property (class, readonly, getter=companion) SWAPIPeopleResultCompanion *companion __attribute__((swift_name("companion")));
+- (NSArray<SWAPIPerson *> *)component1 __attribute__((swift_name("component1()")));
+- (int32_t)component2 __attribute__((swift_name("component2()")));
+- (SWAPIPeopleResult *)doCopyPeople:(NSArray<SWAPIPerson *> *)people count:(int32_t)count __attribute__((swift_name("doCopy(people:count:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) int32_t count __attribute__((swift_name("count")));
+@property (readonly) NSArray<SWAPIPerson *> *people __attribute__((swift_name("people")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("PeopleResult.Companion")))
+@interface SWAPIPeopleResultCompanion : SWAPIBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) SWAPIPeopleResultCompanion *shared __attribute__((swift_name("shared")));
+- (id<SWAPIKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end;
 
 __attribute__((objc_subclassing_restricted))

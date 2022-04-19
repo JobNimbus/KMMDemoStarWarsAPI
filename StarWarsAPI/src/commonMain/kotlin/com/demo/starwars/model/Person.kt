@@ -13,3 +13,13 @@ data class Person(
     val eyeColor: String
 )
 
+@Serializable
+data class PeopleResult(
+    @SerialName("results")
+    val people: List<Person>,
+    @SerialName("count")
+    val count: Int
+)
+
+
+
