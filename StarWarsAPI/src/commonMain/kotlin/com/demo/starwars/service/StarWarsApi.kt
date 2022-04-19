@@ -16,7 +16,7 @@ class StarWarsApi {
     }
 
     companion object {
-        private const val BASE_URL = "https://swapi.dev/"
+        private const val BASE_URL = "https://swapi.dev/api/"
     }
 
     suspend fun getAllCharacters(): List<Person> {
