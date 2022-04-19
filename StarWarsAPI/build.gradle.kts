@@ -15,6 +15,7 @@ multiplatformSwiftPackage {
         iOS { v("15") }
     }
 }
+// ./gradlew createSwiftPackage
 
 val ktorVersion = "1.6.1"
 val sqlDelightVersion: String by project
