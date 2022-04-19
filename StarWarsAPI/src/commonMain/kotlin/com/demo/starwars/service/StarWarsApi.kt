@@ -1,6 +1,6 @@
 package com.demo.starwars.service
 
-import com.demo.starwars.model
+import com.demo.starwars.model.Person
 import io.ktor.client.HttpClient
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.json.serializer.KotlinxSerializer
@@ -19,7 +19,7 @@ class StarWarsApi {
         private const val BASE_URL = "https://swapi.dev/"
     }
 
-    suspend fun getAllCharacters(): List<Character> {
+    suspend fun getAllCharacters(): List<Person> {
         return httpClient.get(BASE_URL + "people")
     }
 }

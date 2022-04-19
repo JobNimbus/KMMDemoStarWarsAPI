@@ -6,9 +6,9 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class SWAPICharacterCompanion, SWAPICharacter, SWAPIKotlinx_serialization_coreSerializersModule, SWAPIKotlinx_serialization_coreSerialKind, SWAPIKotlinNothing;
+@class SWAPIStarWarsApiCompanion, SWAPIPerson, SWAPIPersonCompanion, SWAPIKotlinThrowable, SWAPIKotlinArray<T>, SWAPIKotlinException, SWAPIKotlinRuntimeException, SWAPIKotlinIllegalStateException, SWAPIKotlinx_serialization_coreSerializersModule, SWAPIKotlinx_serialization_coreSerialKind, SWAPIKotlinNothing;
 
-@protocol SWAPIKotlinx_serialization_coreKSerializer, SWAPIKotlinx_serialization_coreEncoder, SWAPIKotlinx_serialization_coreSerialDescriptor, SWAPIKotlinx_serialization_coreSerializationStrategy, SWAPIKotlinx_serialization_coreDecoder, SWAPIKotlinx_serialization_coreDeserializationStrategy, SWAPIKotlinx_serialization_coreCompositeEncoder, SWAPIKotlinAnnotation, SWAPIKotlinx_serialization_coreCompositeDecoder, SWAPIKotlinx_serialization_coreSerializersModuleCollector, SWAPIKotlinKClass, SWAPIKotlinKDeclarationContainer, SWAPIKotlinKAnnotatedElement, SWAPIKotlinKClassifier;
+@protocol SWAPIKotlinx_serialization_coreKSerializer, SWAPIKotlinx_serialization_coreEncoder, SWAPIKotlinx_serialization_coreSerialDescriptor, SWAPIKotlinx_serialization_coreSerializationStrategy, SWAPIKotlinx_serialization_coreDecoder, SWAPIKotlinx_serialization_coreDeserializationStrategy, SWAPIKotlinIterator, SWAPIKotlinx_serialization_coreCompositeEncoder, SWAPIKotlinAnnotation, SWAPIKotlinx_serialization_coreCompositeDecoder, SWAPIKotlinx_serialization_coreSerializersModuleCollector, SWAPIKotlinKClass, SWAPIKotlinKDeclarationContainer, SWAPIKotlinKAnnotatedElement, SWAPIKotlinKClassifier;
 
 NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
@@ -161,14 +161,37 @@ __attribute__((swift_name("Platform")))
 @end;
 
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Character")))
-@interface SWAPICharacter : SWAPIBase
+__attribute__((swift_name("StarWarsApi")))
+@interface SWAPIStarWarsApi : SWAPIBase
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+@property (class, readonly, getter=companion) SWAPIStarWarsApiCompanion *companion __attribute__((swift_name("companion")));
+
+/**
+ @note This method converts instances of CancellationException to errors.
+ Other uncaught Kotlin exceptions are fatal.
+*/
+- (void)getAllCharactersWithCompletionHandler:(void (^)(NSArray<SWAPIPerson *> * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("getAllCharacters(completionHandler:)")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("StarWarsApi.Companion")))
+@interface SWAPIStarWarsApiCompanion : SWAPIBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) SWAPIStarWarsApiCompanion *shared __attribute__((swift_name("shared")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Person")))
+@interface SWAPIPerson : SWAPIBase
 - (instancetype)initWithName:(NSString *)name height:(NSString *)height eyeColor:(NSString *)eyeColor __attribute__((swift_name("init(name:height:eyeColor:)"))) __attribute__((objc_designated_initializer));
-@property (class, readonly, getter=companion) SWAPICharacterCompanion *companion __attribute__((swift_name("companion")));
+@property (class, readonly, getter=companion) SWAPIPersonCompanion *companion __attribute__((swift_name("companion")));
 - (NSString *)component1 __attribute__((swift_name("component1()")));
 - (NSString *)component2 __attribute__((swift_name("component2()")));
 - (NSString *)component3 __attribute__((swift_name("component3()")));
-- (SWAPICharacter *)doCopyName:(NSString *)name height:(NSString *)height eyeColor:(NSString *)eyeColor __attribute__((swift_name("doCopy(name:height:eyeColor:)")));
+- (SWAPIPerson *)doCopyName:(NSString *)name height:(NSString *)height eyeColor:(NSString *)eyeColor __attribute__((swift_name("doCopy(name:height:eyeColor:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
@@ -178,13 +201,64 @@ __attribute__((swift_name("Character")))
 @end;
 
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Character.Companion")))
-@interface SWAPICharacterCompanion : SWAPIBase
+__attribute__((swift_name("Person.Companion")))
+@interface SWAPIPersonCompanion : SWAPIBase
 + (instancetype)alloc __attribute__((unavailable));
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) SWAPICharacterCompanion *shared __attribute__((swift_name("shared")));
+@property (class, readonly, getter=shared) SWAPIPersonCompanion *shared __attribute__((swift_name("shared")));
 - (id<SWAPIKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
+@end;
+
+__attribute__((swift_name("KotlinThrowable")))
+@interface SWAPIKotlinThrowable : SWAPIBase
+- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithCause:(SWAPIKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(SWAPIKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
+- (SWAPIKotlinArray<NSString *> *)getStackTrace __attribute__((swift_name("getStackTrace()")));
+- (void)printStackTrace __attribute__((swift_name("printStackTrace()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) SWAPIKotlinThrowable * _Nullable cause __attribute__((swift_name("cause")));
+@property (readonly) NSString * _Nullable message __attribute__((swift_name("message")));
+- (NSError *)asError __attribute__((swift_name("asError()")));
+@end;
+
+__attribute__((swift_name("KotlinException")))
+@interface SWAPIKotlinException : SWAPIKotlinThrowable
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(SWAPIKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithCause:(SWAPIKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
+@end;
+
+__attribute__((swift_name("KotlinRuntimeException")))
+@interface SWAPIKotlinRuntimeException : SWAPIKotlinException
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(SWAPIKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithCause:(SWAPIKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
+@end;
+
+__attribute__((swift_name("KotlinIllegalStateException")))
+@interface SWAPIKotlinIllegalStateException : SWAPIKotlinRuntimeException
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(SWAPIKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithCause:(SWAPIKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
+@end;
+
+__attribute__((swift_name("KotlinCancellationException")))
+@interface SWAPIKotlinCancellationException : SWAPIKotlinIllegalStateException
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(SWAPIKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithCause:(SWAPIKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
 @end;
 
 __attribute__((swift_name("Kotlinx_serialization_coreSerializationStrategy")))
@@ -204,6 +278,18 @@ __attribute__((swift_name("Kotlinx_serialization_coreDeserializationStrategy")))
 __attribute__((swift_name("Kotlinx_serialization_coreKSerializer")))
 @protocol SWAPIKotlinx_serialization_coreKSerializer <SWAPIKotlinx_serialization_coreSerializationStrategy, SWAPIKotlinx_serialization_coreDeserializationStrategy>
 @required
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("KotlinArray")))
+@interface SWAPIKotlinArray<T> : SWAPIBase
++ (instancetype)arrayWithSize:(int32_t)size init:(T _Nullable (^)(SWAPIInt *))init __attribute__((swift_name("init(size:init:)")));
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
+- (T _Nullable)getIndex:(int32_t)index __attribute__((swift_name("get(index:)")));
+- (id<SWAPIKotlinIterator>)iterator __attribute__((swift_name("iterator()")));
+- (void)setIndex:(int32_t)index value:(T _Nullable)value __attribute__((swift_name("set(index:value:)")));
+@property (readonly) int32_t size __attribute__((swift_name("size")));
 @end;
 
 __attribute__((swift_name("Kotlinx_serialization_coreEncoder")))
@@ -265,6 +351,13 @@ __attribute__((swift_name("Kotlinx_serialization_coreDecoder")))
 - (int16_t)decodeShort __attribute__((swift_name("decodeShort()")));
 - (NSString *)decodeString __attribute__((swift_name("decodeString()")));
 @property (readonly) SWAPIKotlinx_serialization_coreSerializersModule *serializersModule __attribute__((swift_name("serializersModule")));
+@end;
+
+__attribute__((swift_name("KotlinIterator")))
+@protocol SWAPIKotlinIterator
+@required
+- (BOOL)hasNext __attribute__((swift_name("hasNext()")));
+- (id _Nullable)next __attribute__((swift_name("next()")));
 @end;
 
 __attribute__((swift_name("Kotlinx_serialization_coreCompositeEncoder")))
