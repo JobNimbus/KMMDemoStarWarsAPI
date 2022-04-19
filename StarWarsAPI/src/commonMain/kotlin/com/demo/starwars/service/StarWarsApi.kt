@@ -22,6 +22,8 @@ class StarWarsApi {
             json(Json {
                 prettyPrint = true
                 isLenient = true
+                ignoreUnknownKeys = true
+                useAlternativeNames = false
             })
         }
     }
