@@ -407,8 +407,6 @@ __attribute__((swift_name("Kotlinx_serialization_coreCompositeEncoder")))
 
 __attribute__((swift_name("Kotlinx_serialization_coreSerializersModule")))
 @interface SWAPIKotlinx_serialization_coreSerializersModule : SWAPIBase
-- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
-+ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 - (void)dumpToCollector:(id<SWAPIKotlinx_serialization_coreSerializersModuleCollector>)collector __attribute__((swift_name("dumpTo(collector:)")));
 - (id<SWAPIKotlinx_serialization_coreKSerializer> _Nullable)getContextualKClass:(id<SWAPIKotlinKClass>)kClass typeArgumentsSerializers:(NSArray<id<SWAPIKotlinx_serialization_coreKSerializer>> *)typeArgumentsSerializers __attribute__((swift_name("getContextual(kClass:typeArgumentsSerializers:)")));
 - (id<SWAPIKotlinx_serialization_coreSerializationStrategy> _Nullable)getPolymorphicBaseClass:(id<SWAPIKotlinKClass>)baseClass value:(id)value __attribute__((swift_name("getPolymorphic(baseClass:value:)")));
@@ -422,8 +420,6 @@ __attribute__((swift_name("KotlinAnnotation")))
 
 __attribute__((swift_name("Kotlinx_serialization_coreSerialKind")))
 @interface SWAPIKotlinx_serialization_coreSerialKind : SWAPIBase
-- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
-+ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
 @end;
@@ -461,7 +457,9 @@ __attribute__((swift_name("Kotlinx_serialization_coreSerializersModuleCollector"
 - (void)contextualKClass:(id<SWAPIKotlinKClass>)kClass provider:(id<SWAPIKotlinx_serialization_coreKSerializer> (^)(NSArray<id<SWAPIKotlinx_serialization_coreKSerializer>> *))provider __attribute__((swift_name("contextual(kClass:provider:)")));
 - (void)contextualKClass:(id<SWAPIKotlinKClass>)kClass serializer:(id<SWAPIKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("contextual(kClass:serializer:)")));
 - (void)polymorphicBaseClass:(id<SWAPIKotlinKClass>)baseClass actualClass:(id<SWAPIKotlinKClass>)actualClass actualSerializer:(id<SWAPIKotlinx_serialization_coreKSerializer>)actualSerializer __attribute__((swift_name("polymorphic(baseClass:actualClass:actualSerializer:)")));
-- (void)polymorphicDefaultBaseClass:(id<SWAPIKotlinKClass>)baseClass defaultSerializerProvider:(id<SWAPIKotlinx_serialization_coreDeserializationStrategy> _Nullable (^)(NSString * _Nullable))defaultSerializerProvider __attribute__((swift_name("polymorphicDefault(baseClass:defaultSerializerProvider:)")));
+- (void)polymorphicDefaultBaseClass:(id<SWAPIKotlinKClass>)baseClass defaultDeserializerProvider:(id<SWAPIKotlinx_serialization_coreDeserializationStrategy> _Nullable (^)(NSString * _Nullable))defaultDeserializerProvider __attribute__((swift_name("polymorphicDefault(baseClass:defaultDeserializerProvider:)")));
+- (void)polymorphicDefaultDeserializerBaseClass:(id<SWAPIKotlinKClass>)baseClass defaultDeserializerProvider:(id<SWAPIKotlinx_serialization_coreDeserializationStrategy> _Nullable (^)(NSString * _Nullable))defaultDeserializerProvider __attribute__((swift_name("polymorphicDefaultDeserializer(baseClass:defaultDeserializerProvider:)")));
+- (void)polymorphicDefaultSerializerBaseClass:(id<SWAPIKotlinKClass>)baseClass defaultSerializerProvider:(id<SWAPIKotlinx_serialization_coreSerializationStrategy> _Nullable (^)(id))defaultSerializerProvider __attribute__((swift_name("polymorphicDefaultSerializer(baseClass:defaultSerializerProvider:)")));
 @end;
 
 __attribute__((swift_name("KotlinKDeclarationContainer")))

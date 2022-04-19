@@ -17,7 +17,8 @@ multiplatformSwiftPackage {
 }
 // ./gradlew createSwiftPackage
 
-val ktorVersion = "1.6.1"
+val ktorVersion = "2.0.0"
+val ktor_version = "2.0.0"
 val sqlDelightVersion: String by project
 
 kotlin {
@@ -38,10 +39,18 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0-native-mt")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.2.2")
-                implementation("io.ktor:ktor-client-core:$ktorVersion")
-                implementation("io.ktor:ktor-client-serialization:$ktorVersion")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1-native-mt")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.3.2")
+//                implementation("io.ktor:ktor-client-core:$ktorVersion")
+//                implementation("io.ktor:ktor-client-serialization:$ktorVersion")
+
+                implementation("io.ktor:ktor-client-core:$ktor_version")
+                implementation("io.ktor:ktor-client-cio:$ktor_version")
+                implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
+                //implementation("io.ktor:ktor-serialization-kotlinx-xml:$ktor_version")
+                //implementation("io.ktor:ktor-serialization-kotlinx-cbor:$ktor_version")
+
                 implementation("com.squareup.sqldelight:runtime:$sqlDelightVersion")
             }
         }
